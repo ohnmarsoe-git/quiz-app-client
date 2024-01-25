@@ -52,7 +52,6 @@ export const AuthProvider: React.FC<AuthContextProviderProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-  
     if(authState?.authToken) {
       if (checkTokenExpiration(authState?.authToken)) {
         logoutDispatch();

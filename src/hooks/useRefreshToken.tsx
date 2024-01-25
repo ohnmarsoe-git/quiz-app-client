@@ -3,7 +3,7 @@ import useAuth from './useAuth'
 
 const useRefreshToken = () => {
 
-  const { authState, loginDispatch } = useAuth();
+  const { loginDispatch } = useAuth();
 
   const refresh = async () => {
 
@@ -14,18 +14,13 @@ const useRefreshToken = () => {
     if(response.status === 200) {
       //@ts-ignore
       loginDispatch({
-        id: authState?.id || '',
-        firstName: authState?.firstName || '',
-        lastName: authState?.lastName || '' ,
-        email: authState?.email || '',
-        role: authState?.role || '', 
+        id: response.data?.user.id,
+        firstName: response.data?.user.firstName,
+        lastName: response.data?.user.lastName,
+        email: response.data?.user.email,
+        role: response.data?.user.role, 
         authToken: response.data?.accessToken
       })
-      
-      //@ts-ignore
-      // loginDispatch( (prev) => {
-      //   return { ...prev, accessToken: response.data?.accessToken }
-      // })
 
       return response.data?.accessToken;
     }

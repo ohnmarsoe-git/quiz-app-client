@@ -13,9 +13,10 @@ const Results = () => {
 
   useEffect(() => {
     const getAnswerResults = async () => {
+      console.log(authState);
       try {
         const response = await api.get(
-          `/api/v1/answers/history/${authState.id}`
+          `/api/v1/answers/history/${authState?.id}`
         );
         const res = response?.data.data;
         console.log(res);

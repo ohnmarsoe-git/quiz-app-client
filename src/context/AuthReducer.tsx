@@ -3,7 +3,6 @@ import { AuthAction } from './authActions';
 
 export interface AuthState {
   isAuth?: boolean;
-  isAdminAuth?: boolean;
   id?: string;
   firstName?: string;
   lastName?: string;
@@ -13,8 +12,7 @@ export interface AuthState {
 }
 
 export const defaultAuthState: AuthState = {
-  isAuth: false,
-  isAdminAuth: false
+  isAuth: false
 };
 
 const AuthReducer: Reducer<AuthState, AuthAction> = (state, action) => {
@@ -38,8 +36,7 @@ const AuthReducer: Reducer<AuthState, AuthAction> = (state, action) => {
       isAuth: false,
       email: '',
       role: '',
-      authToken: '',
-      refreshToken: ''
+      authToken: ''
     };
   }
 

@@ -16,15 +16,15 @@ const useLogin = () => {
 
   const handleGoogle = (response: any) => {
     api
-      .post(`/gglogin`, JSON.stringify({ credential: response.credential }))
+      .post(`/gglogin`, { credential: response.credential })
       .then((res: any) => {
         if (res.status === 200) {
           loginDispatch({
-            id: res.data.id,
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            email: res.data.email,
-            role: res.data.role,
+            id: res.data?.user?.id,
+            firstName: res.data?.user?.firstName,
+            lastName: res.data?.user?.lastName,
+            email: res.data?.user?.email,
+            role: 'user',
             authToken: res.data.accessToken
           });
         }
@@ -42,10 +42,10 @@ const useLogin = () => {
         .then((res: any) => {
           if (res.status === 200) {
             loginDispatch({
-              id: res.data.id,
-              firstName: res.data.firstName,
-              lastName: res.data.lastName,
-              email: res.data.email,
+              id: res.data?.user?.id,
+              firstName: res.data?.user?.firstName,
+              lastName: res.data?.user?.lastName,
+              email: res.data?.user?.email,
               role: 'user',
               authToken: res.data.accessToken
             });
